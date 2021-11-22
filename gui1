@@ -1,0 +1,20 @@
+import PySimpleGUI as sg
+
+layout = [
+    [sg.Text("This is a PySimpleGUI application.")], 
+    [sg.Text("Input goes here: "), sg.Input(key="userData")],
+    [sg.Text("Output will go here.", key="output")],
+    [sg.Button("Save")],
+    [sg.Button("Show", size=(50, 1))]
+]
+
+window = sg.Window("App", layout)
+
+while True:
+    event, values = window.read()
+    if event == "Save" or event == sg.WIN_CLOSED:
+        break
+    if event == "Show":
+        window["output"].update(values["userData"])
+        
+window.close()
